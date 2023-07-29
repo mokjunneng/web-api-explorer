@@ -1,0 +1,34 @@
+.menuBackground {
+  display: flex;
+  justify-content: right;
+  cursor: pointer;
+  background-color: #000000B2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  cursor: default;
+  background-color: #42607B;
+  width: 520px;
+  height: 100%;
+  padding: 20px;
+  z-index: 2;
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: center;
+  font-family: 'Iter', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #F5F5F5;
+  width: 100%;
+}
