@@ -1,49 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ProviderDetails } from "../../models/service-provider-details";
 
 export interface GetProviderDetailsResponse {
-  apis: { [key: string]: ProviderDetail };
-}
-
-export interface ProviderDetail {
-  added: string;
-  info: ProviderDetailInfo;
-  updated: string;
-  swaggerUrl: string;
-  swaggerYamlUrl: string;
-  openapiVer: string;
-  link: string;
-}
-
-export interface ProviderDetailInfo {
-  contact: {
-    email: string;
-    name: string;
-    url: string;
-    "x-twitter": string;
-  };
-  description: string;
-  title: string;
-  version: string;
-  "x-apisguru-categories": string[];
-  "x-logo": {
-    url: string;
-  };
-  "x-origin": XOrigin[];
-  "x-providerName": string;
-  "x-serviceName": string;
-  "x-unofficialSpec": boolean;
-}
-
-export interface XOrigin {
-  format: string;
-  url: string;
-  version: string;
+  apis: { [key: string]: ProviderDetails };
 }
 
 export function useGetProviderDetails(providerName: string) {
   const [isLoading, setIsLoading] = useState(true);
-  const [providerDetails, setProviderDetails] = useState<ProviderDetail | undefined>(undefined);
+  const [providerDetails, setProviderDetails] = useState<ProviderDetails | undefined>(undefined);
 
   useEffect(() => {
     (async () => {
