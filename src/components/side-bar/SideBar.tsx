@@ -15,8 +15,7 @@ export function SideBar({ onClickBackground }: SideBarProps): ReactElement {
       <div className="menu" onClick={(e) => e.stopPropagation()}>
         <div className="menuHeader"><span>Select Provider</span></div>
         <div className="menuItems">
-          {isLoading ?
-            <div>Loading...</div> :
+          {!isLoading &&
             providers.map((provider) => {
               return <SideBarMenuItem key={provider} providerName={provider} />
             })
