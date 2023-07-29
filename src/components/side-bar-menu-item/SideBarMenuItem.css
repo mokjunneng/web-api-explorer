@@ -1,0 +1,16 @@
+.menuItem {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  color: #FFFFFF;
+  font-family: 'Iter', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.expandIconContainer {
+  width: 32px;
+  height: 32px;
+}

@@ -32,3 +32,13 @@
   color: #F5F5F5;
   width: 100%;
 }
+
+.menuItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding: 12px;
+  width: 100%;
+}
