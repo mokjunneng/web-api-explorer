@@ -1,35 +1,25 @@
-export interface ProviderDetails {
-  added: string;
-  info: ProviderDetailInfo;
-  updated: string;
-  swaggerUrl: string;
-  swaggerYamlUrl: string;
-  openapiVer: string;
-  link: string;
+import { components } from "../api/generated/apisguru";
+
+// Create custom interface to include OpenAPI's Info Object schema https://swagger.io/specification/#oas-document:~:text=Specification%20Extensions.-,Info%20Object,-The%20object%20provides
+// However, only include key properties that we will be using
+export type ServiceProviderAPIVersionDetails = Omit<components["schemas"]["ApiVersion"], "info"> & {
+  info: {
+    title: string;
+    description?: string;
+    contact?: {
+      name?: string;
+      url?: string;
+      email?: string;
+    }
+    ["x-logo"]?: {
+      url: string;
+    }
+  }
 }
 
-export interface ProviderDetailInfo {
-  contact: {
-    email: string;
-    name: string;
-    url: string;
-    "x-twitter": string;
-  };
-  description: string;
-  title: string;
-  version: string;
-  "x-apisguru-categories": string[];
-  "x-logo": {
-    url: string;
-  };
-  "x-origin": XOrigin[];
-  "x-providerName": string;
-  "x-serviceName": string;
-  "x-unofficialSpec": boolean;
-}
-
-export interface XOrigin {
-  format: string;
-  url: string;
-  version: string;
+// Since we are only querying for v2 APIs, create a new interface for fixed version service details
+export interface ServiceProviderDetails {
+  apis: {
+    [api: string]: ServiceProviderAPIVersionDetails;
+  }
 }

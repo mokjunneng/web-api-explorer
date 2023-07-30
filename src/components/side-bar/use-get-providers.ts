@@ -1,23 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-interface GetProvidersResponse {
-  data: string[];
-}
+import { getEnvironmentVariable } from "../../helpers/environment";
+import { operations } from "../../api/generated/apisguru"
 
 export function useGetProviders() {
   const [isLoading, setIsLoading] = useState(true);
-  const [providers, setProviders] = useState<string[]>([]);
+  const [providers, setProviders] = useState<string[] | undefined>(undefined);
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.request<GetProvidersResponse>({
+        const response = await axios.request<operations["getProviders"]["responses"]["200"]["content"]["application/json"]>({
           method: 'get',
-          // TODO: Move this to environment variable
-          url: 'https://api.apis.guru/v2/providers.json',
+          url: `${getEnvironmentVariable('REACT_APP_APIS_GURU_BASE_URL')}/providers.json`,
         });
-
         setProviders(response.data.data);
       } catch (error) {
         console.error((error as Error).message);

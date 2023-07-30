@@ -2,11 +2,11 @@ import { ReactElement } from "react";
 import { useGetProviders } from "./use-get-providers";
 import './SideBar.css';
 import { SideBarMenuItem } from "../side-bar-menu-item/SideBarMenuItem";
-import { ProviderDetails } from "../../models/service-provider-details";
+import { ServiceProviderAPIVersionDetails } from "../../models/service-provider-details";
 
 interface SideBarProps {
   onClickBackground: () => void;
-  onClickProvider: (providerDetails: ProviderDetails | undefined) => void;
+  onClickProvider: (providerApiDetails: ServiceProviderAPIVersionDetails | undefined) => void;
 }
 
 export function SideBar({ onClickBackground, onClickProvider }: SideBarProps): ReactElement {
@@ -17,7 +17,7 @@ export function SideBar({ onClickBackground, onClickProvider }: SideBarProps): R
       <div className="menu" onClick={(e) => e.stopPropagation()}>
         <div className="menuHeader"><span>Select Provider</span></div>
         <div className="menuItems">
-          {!isLoading &&
+          {!isLoading && providers &&
             providers.map((provider) => {
               return <SideBarMenuItem key={provider} providerName={provider} onClickProvider={onClickProvider} />
             })

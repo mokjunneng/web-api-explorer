@@ -6,7 +6,8 @@
   ],
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "codegen": "openapi-typescript https://api.apis.guru/v2/openapi.yaml --output src/api/generated/apisguru.d.ts"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "openapi-typescript": "^6.3.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
