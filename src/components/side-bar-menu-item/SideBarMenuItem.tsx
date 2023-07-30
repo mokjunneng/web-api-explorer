@@ -13,12 +13,9 @@ interface SideBarMenuItemProps {
 export function SideBarMenuItem({ providerName, onClickProvider }: SideBarMenuItemProps): ReactElement {
   const [expanded, setExpanded] = useState(false);
   const { isLoading, providerDetails } = useGetProviderDetails(providerName);
-  // NOTE: There may be multiple service details objects, fetch the first one only for display
-  const firstProviderApiDetails = providerDetails ? Object.values(providerDetails.apis)[0] : undefined;
 
-  const onClickServiceProvider = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-    e.stopPropagation();
-    onClickProvider(firstProviderApiDetails);
+  const onClickServiceProvider = (providerApiDetails: ServiceProviderAPIVersionDetails) => {
+    onClickProvider(providerApiDetails);
   };
 
   return (
@@ -31,12 +28,23 @@ export function SideBarMenuItem({ providerName, onClickProvider }: SideBarMenuIt
               <img src={ExpandArrowUpIcon} alt="ExpandArrowUp" />
             </span>
           </div>
-          {!isLoading && firstProviderApiDetails && (
-            <div className="providerTitle" onClick={onClickServiceProvider}>
-              <img className="providerLogo" src={firstProviderApiDetails?.info['x-logo']?.url} />
-              {firstProviderApiDetails?.info.title}
-            </div>
-          )}
+          {!isLoading &&
+            providerDetails &&
+            Object.values(providerDetails.apis).map((apiDetails, index) => {
+              return (
+                <div
+                  key={index}
+                  className="providerTitle"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onClickServiceProvider(apiDetails);
+                  }}
+                >
+                  <img className="providerLogo" src={apiDetails?.info['x-logo']?.url} />
+                  {apiDetails?.info.title}
+                </div>
+              );
+            })}
         </div>
       ) : (
         <div className="menuItem" onClick={() => setExpanded(!expanded)}>
