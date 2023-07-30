@@ -1,5 +1,5 @@
-.main {  
-  background-color: #42607B;
+.main {
+  background-color: #42607b;
   position: fixed;
   padding: 40px;
   top: 0;
@@ -7,7 +7,7 @@
   right: 0;
   bottom: 0;
 
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: 'Inter', sans-serif;
 }
 
@@ -57,7 +57,7 @@
 .backButton {
   display: flex;
   align-items: center;
-  background-color: #00A1D4;
+  background-color: #00a1d4;
   border-radius: 8px;
   padding: 12px 16px;
   cursor: pointer;

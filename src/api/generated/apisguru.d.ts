@@ -3,45 +3,44 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/providers.json": {
+  '/providers.json': {
     /**
      * List all providers
      * @description List all the providers in the directory
      */
-    get: operations["getProviders"];
+    get: operations['getProviders'];
   };
-  "/{provider}.json": {
+  '/{provider}.json': {
     /**
      * List all APIs for a particular provider
      * @description List all APIs in the directory for a particular providerName
      * Returns links to the individual API entry for each API.
      */
-    get: operations["getProvider"];
+    get: operations['getProvider'];
   };
-  "/{provider}/services.json": {
+  '/{provider}/services.json': {
     /**
      * List all serviceNames for a particular provider
      * @description List all serviceNames in the directory for a particular providerName
      */
-    get: operations["getServices"];
+    get: operations['getServices'];
   };
-  "/specs/{provider}/{api}.json": {
+  '/specs/{provider}/{api}.json': {
     /**
      * Retrieve one version of a particular API
      * @description Returns the API entry for one specific version of an API where there is no serviceName.
      */
-    get: operations["getAPI"];
+    get: operations['getAPI'];
   };
-  "/specs/{provider}/{service}/{api}.json": {
+  '/specs/{provider}/{service}/{api}.json': {
     /**
      * Retrieve one version of a particular API with a serviceName.
      * @description Returns the API entry for one specific version of an API where there is a serviceName.
      */
-    get: operations["getServiceAPI"];
+    get: operations['getServiceAPI'];
   };
-  "/list.json": {
+  '/list.json': {
     /**
      * List all APIs
      * @description List all APIs in the directory.
@@ -50,15 +49,15 @@ export interface paths {
      * Some basic info from the OpenAPI definition is cached inside each object.
      * This allows you to generate some simple views without needing to fetch the OpenAPI definition for each API.
      */
-    get: operations["listAPIs"];
+    get: operations['listAPIs'];
   };
-  "/metrics.json": {
+  '/metrics.json': {
     /**
      * Get basic metrics
      * @description Some basic metrics for the entire directory.
      * Just stunning numbers to put on a front page and are intended purely for WoW effect :)
      */
-    get: operations["getMetrics"];
+    get: operations['getMetrics'];
   };
 }
 
@@ -128,7 +127,7 @@ export interface components {
      * }
      */
     APIs: {
-      [key: string]: components["schemas"]["API"] | undefined;
+      [key: string]: components['schemas']['API'] | undefined;
     };
     /** @description Meta information about API */
     API: {
@@ -142,7 +141,7 @@ export interface components {
       preferred: string;
       /** @description List of supported versions of the API */
       versions: {
-        [key: string]: components["schemas"]["ApiVersion"] | undefined;
+        [key: string]: components['schemas']['ApiVersion'] | undefined;
       };
     };
     ApiVersion: {
@@ -249,7 +248,6 @@ export interface components {
 export type external = Record<string, never>;
 
 export interface operations {
-
   /**
    * List all providers
    * @description List all the providers in the directory
@@ -259,7 +257,7 @@ export interface operations {
       /** @description OK */
       200: {
         content: {
-          "application/json": {
+          'application/json': {
             data?: string[];
           };
         };
@@ -274,14 +272,14 @@ export interface operations {
   getProvider: {
     parameters: {
       path: {
-        provider: components["parameters"]["provider"];
+        provider: components['parameters']['provider'];
       };
     };
     responses: {
       /** @description OK */
       200: {
         content: {
-          "application/json": components["schemas"]["APIs"];
+          'application/json': components['schemas']['APIs'];
         };
       };
     };
@@ -293,14 +291,14 @@ export interface operations {
   getServices: {
     parameters: {
       path: {
-        provider: components["parameters"]["provider"];
+        provider: components['parameters']['provider'];
       };
     };
     responses: {
       /** @description OK */
       200: {
         content: {
-          "application/json": {
+          'application/json': {
             data?: string[];
           };
         };
@@ -314,15 +312,15 @@ export interface operations {
   getAPI: {
     parameters: {
       path: {
-        provider: components["parameters"]["provider"];
-        api: components["parameters"]["api"];
+        provider: components['parameters']['provider'];
+        api: components['parameters']['api'];
       };
     };
     responses: {
       /** @description OK */
       200: {
         content: {
-          "application/json": components["schemas"]["API"];
+          'application/json': components['schemas']['API'];
         };
       };
     };
@@ -334,16 +332,16 @@ export interface operations {
   getServiceAPI: {
     parameters: {
       path: {
-        provider: components["parameters"]["provider"];
+        provider: components['parameters']['provider'];
         service: string;
-        api: components["parameters"]["api"];
+        api: components['parameters']['api'];
       };
     };
     responses: {
       /** @description OK */
       200: {
         content: {
-          "application/json": components["schemas"]["API"];
+          'application/json': components['schemas']['API'];
         };
       };
     };
@@ -361,7 +359,7 @@ export interface operations {
       /** @description OK */
       200: {
         content: {
-          "application/json": components["schemas"]["APIs"];
+          'application/json': components['schemas']['APIs'];
         };
       };
     };
@@ -376,7 +374,7 @@ export interface operations {
       /** @description OK */
       200: {
         content: {
-          "application/json": components["schemas"]["Metrics"];
+          'application/json': components['schemas']['Metrics'];
         };
       };
     };

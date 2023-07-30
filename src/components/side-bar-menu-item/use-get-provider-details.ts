@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { getEnvironmentVariable } from "../../helpers/environment";
-import { ServiceProviderDetails } from "../../models/service-provider-details";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { getEnvironmentVariable } from '../../helpers/environment';
+import { ServiceProviderDetails } from '../../models/service-provider-details';
 
 export function useGetProviderDetails(providerName: string) {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,5 +27,5 @@ export function useGetProviderDetails(providerName: string) {
   return {
     isLoading,
     providerDetails,
-  }
+  };
 }

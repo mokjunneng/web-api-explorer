@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { getEnvironmentVariable } from "../../helpers/environment";
-import { operations } from "../../api/generated/apisguru"
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { getEnvironmentVariable } from '../../helpers/environment';
+import { operations } from '../../api/generated/apisguru';
 
 export function useGetProviders() {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +10,9 @@ export function useGetProviders() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.request<operations["getProviders"]["responses"]["200"]["content"]["application/json"]>({
+        const response = await axios.request<
+          operations['getProviders']['responses']['200']['content']['application/json']
+        >({
           method: 'get',
           url: `${getEnvironmentVariable('REACT_APP_APIS_GURU_BASE_URL')}/providers.json`,
         });
@@ -26,5 +28,5 @@ export function useGetProviders() {
   return {
     isLoading,
     providers,
-  }
+  };
 }

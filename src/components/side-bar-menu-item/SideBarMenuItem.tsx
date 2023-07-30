@@ -1,9 +1,9 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useState } from 'react';
 import ExpandArrowDownIcon from '../../icons/ExpandArrowDown.svg';
 import ExpandArrowUpIcon from '../../icons/ExpandArrowUp.svg';
-import { ServiceProviderAPIVersionDetails } from "../../models/service-provider-details";
+import { ServiceProviderAPIVersionDetails } from '../../models/service-provider-details';
 import './SideBarMenuItem.css';
-import { useGetProviderDetails } from "./use-get-provider-details";
+import { useGetProviderDetails } from './use-get-provider-details';
 
 interface SideBarMenuItemProps {
   providerName: string;
@@ -19,22 +19,33 @@ export function SideBarMenuItem({ providerName, onClickProvider }: SideBarMenuIt
   const onClickServiceProvider = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     e.stopPropagation();
     onClickProvider(firstProviderApiDetails);
-  }
+  };
 
   return (
     <>
-      {expanded ? 
+      {expanded ? (
         <div className="menuItem expanded" onClick={() => setExpanded(!expanded)}>
           <div className="expandedHeader">
             <span>{providerName}</span>
-            <span className="expandIconContainer"><img src={ExpandArrowUpIcon} alt='ExpandArrowUp'/></span>
+            <span className="expandIconContainer">
+              <img src={ExpandArrowUpIcon} alt="ExpandArrowUp" />
+            </span>
           </div>
-          {!isLoading && firstProviderApiDetails && <div className="providerTitle" onClick={onClickServiceProvider}><img className="providerLogo" src={firstProviderApiDetails?.info["x-logo"]?.url}/>{firstProviderApiDetails?.info.title}</div>}
-        </div> :
+          {!isLoading && firstProviderApiDetails && (
+            <div className="providerTitle" onClick={onClickServiceProvider}>
+              <img className="providerLogo" src={firstProviderApiDetails?.info['x-logo']?.url} />
+              {firstProviderApiDetails?.info.title}
+            </div>
+          )}
+        </div>
+      ) : (
         <div className="menuItem" onClick={() => setExpanded(!expanded)}>
           <span>{providerName}</span>
-          <span className="expandIconContainer"><img src={ExpandArrowDownIcon} alt='ExpandArrowDown'/></span>
-        </div>}
+          <span className="expandIconContainer">
+            <img src={ExpandArrowDownIcon} alt="ExpandArrowDown" />
+          </span>
+        </div>
+      )}
     </>
-  )
+  );
 }

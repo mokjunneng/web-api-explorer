@@ -7,21 +7,26 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "codegen": "openapi-typescript https://api.apis.guru/v2/openapi.yaml --output src/api/generated/apisguru.d.ts"
+    "codegen": "openapi-typescript https://api.apis.guru/v2/openapi.yaml --output src/api/generated/apisguru.d.ts",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
-    "eslint": "^8.46.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.1",
+    "husky": ">=6",
+    "lint-staged": "^13.2.3",
+    "openapi-typescript": "^6.3.9",
     "prettier": "^3.0.0",
     "react-scripts": "5.0.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
     "axios": "^1.4.0",
-    "openapi-typescript": "^6.3.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -35,6 +40,14 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,tsx,css,json}": [
+      "prettier --write"
+    ],
+    "src/**/*.{js,ts,tsx}": [
+      "eslint --fix"
     ]
   }
 }

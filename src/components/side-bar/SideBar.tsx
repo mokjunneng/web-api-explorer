@@ -1,8 +1,8 @@
-import { ReactElement } from "react";
-import { useGetProviders } from "./use-get-providers";
+import { ReactElement } from 'react';
+import { useGetProviders } from './use-get-providers';
 import './SideBar.css';
-import { SideBarMenuItem } from "../side-bar-menu-item/SideBarMenuItem";
-import { ServiceProviderAPIVersionDetails } from "../../models/service-provider-details";
+import { SideBarMenuItem } from '../side-bar-menu-item/SideBarMenuItem';
+import { ServiceProviderAPIVersionDetails } from '../../models/service-provider-details';
 
 interface SideBarProps {
   onClickBackground: () => void;
@@ -15,15 +15,19 @@ export function SideBar({ onClickBackground, onClickProvider }: SideBarProps): R
   return (
     <div className="menuBackground" onClick={onClickBackground}>
       <div className="menu" onClick={(e) => e.stopPropagation()}>
-        <div className="menuHeader"><span>Select Provider</span></div>
+        <div className="menuHeader">
+          <span>Select Provider</span>
+        </div>
         <div className="menuItems">
-          {!isLoading && providers &&
+          {!isLoading &&
+            providers &&
             providers.map((provider) => {
-              return <SideBarMenuItem key={provider} providerName={provider} onClickProvider={onClickProvider} />
-            })
-          }
+              return (
+                <SideBarMenuItem key={provider} providerName={provider} onClickProvider={onClickProvider} />
+              );
+            })}
         </div>
       </div>
     </div>
-  )
+  );
 }

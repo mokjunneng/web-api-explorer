@@ -4,7 +4,9 @@ import { createRoot } from 'react-dom/client';
 const getRoot = () => {
   const existingRoot = document.getElementById('root');
 
-  if (existingRoot) { return existingRoot; }
+  if (existingRoot) {
+    return existingRoot;
+  }
 
   const newRoot = document.createElement('div');
   newRoot.id = 'root';

@@ -5,14 +5,14 @@
   flex-wrap: wrap;
   width: 100%;
   padding: 10px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: 'Iter', sans-serif;
   font-size: 24px;
   font-weight: 400;
 }
 
 .expanded {
-  background-color: #1A2632;
+  background-color: #1a2632;
   border-radius: 8px;
   gap: 10px;
 }
